@@ -1,0 +1,1 @@
+programma che riceve da riga di comando una serie di file e fa il backup in una cartella letta da tastiera

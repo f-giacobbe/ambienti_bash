@@ -1,0 +1,4 @@
+stessa di 1 ma i nomi dei file sono contenuti in un file files.txt
+
+ es. contenuto di files.txt
+	pippo.txt topolino.txt

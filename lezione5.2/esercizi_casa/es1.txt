@@ -1,0 +1,4 @@
+Fare una variante dell'esercizio contaocc in cui viene sostituita una parola con un'altra (es. sostituisco Antonio con Marco). Deve funzionare anche in un testo con virgole, punti, ecc.
+
+
+HINT: usare la redirezione dell'output (se uguale appendo la parola da sostituire, alrimenti la parola normale)
