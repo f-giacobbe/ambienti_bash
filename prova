@@ -1,0 +1,4 @@
+str="ciao.docx"
+
+a=$(echo $str | tr . ' ')
+echo $a(1)
