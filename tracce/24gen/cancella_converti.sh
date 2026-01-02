@@ -44,8 +44,8 @@ for w in $input; do
         fi
 
         if [ ! -e $cartellaFile/$nomeFile.* ]; then
-            echo "Errore, file $nomeFile non esistente"
-            #exit 1
+            echo "File $nomeFile non esistente"
+            exit 1
         fi
 
         # Caso 1: il file esiste con l'estensione specificata -> lo cancello
@@ -55,8 +55,16 @@ for w in $input; do
 
         # Caso 2: il file esiste con una qualsiasi altra estensione -> lo copio
         elif [ -f $cartellaFile/$nomeFile.* ]; then
-            cp $cartellaFile/$nomeFile.* $cartella_output/$nomeFile.$ext
-            let numFileCopiati=($numFileCopiati + 1)
+            if [ -f $cartella_output/$nomeFile.$ext ]; then
+                read -p "File $cartella_output/$nomeFile.$ext già presente. Vuoi sostituirlo? [y/n]" scelta
+                if [ $scelta = "y" ]; then
+                    cp $cartellaFile/$nomeFile.* $cartella_output/$nomeFile.$ext
+                    let numFileCopiati=($numFileCopiati + 1)
+                fi
+            else
+                cp $cartellaFile/$nomeFile.* $cartella_output/$nomeFile.$ext
+                let numFileCopiati=($numFileCopiati + 1)
+            fi
         fi
     fi
 
