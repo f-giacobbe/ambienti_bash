@@ -46,7 +46,7 @@ for ext in $estensioni_da_cancellare; do
         rm "$cartella"/"$file"
     done;
     
-    output=$(echo -e "$output\n $ext=$numFile")
+    output=$(echo -e "$output\n$ext=$numFile")
 done;
 
 echo $output
