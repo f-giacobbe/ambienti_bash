@@ -5,7 +5,6 @@
 # Il programma deve gestire i casi d’eccezione (numero di argomenti diverso da tre, file già esistente, ecc.) interrompendo l’esecuzione con un messaggio all’utente.
 
 
-
 if [ $# -ne 2 ]; then
     echo "Uso: $0 <cartella_sorgente> <file_istr>"
     exit 1
@@ -13,6 +12,11 @@ fi
 
 cartellaSorgente=$1
 fileInput=$2        # <nome_libro> <est> <cartella_backup>
+
+if [ ! -d "$cartellaSorgente" -o ! -f "$fileInput" ]; then
+    echo "Errore! File o directory non esistente"
+    exit 1
+fi
 
 contenutoFile=$(cat "$fileInput")
 
@@ -46,6 +50,11 @@ for ext in $estensioni; do
                 # Esiste nella cartella sorgente?
                 if [ -f "$cartellaSorgente/$nomeCompletoFile" ]; then
                     # Copio nella cartella di backup rinominandolo in .bak e lo elimino dalla cartella sorgente
+                    if [ -f "$cartBackup/$nomeFileNoExt.bak" ]; then
+                        echo "Errore. File $cartBackup/$nomeFileNoExt.bak già esistente."
+                        exit 1
+                    fi
+
                     cp "$cartellaSorgente/$nomeCompletoFile" "$cartBackup/$nomeFileNoExt.bak"
                     rm "$cartellaSorgente/$nomeCompletoFile"
 
