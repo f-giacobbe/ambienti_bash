@@ -22,10 +22,8 @@ count=0
 for w in $contenutoFile; do
     if [ $count -eq 1 ]; then
         estensioni=$(echo -e $w\n$estensioni)
-        let count=($count+1)%3
-    else
-        let count=($count+1)%3
     fi
+    let count=($count+1)%3
 done
 estensioni=$(echo $estensioni | sort -u)
 
