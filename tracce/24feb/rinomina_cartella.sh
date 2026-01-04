@@ -19,18 +19,21 @@ contenutoFile=$(cat "$fileInput")
 output="File cancellati per estensione:\n"
 estensioni=""
 count=0
-for w in "$contenutoFile"; do
+for w in $contenutoFile; do
     if [ $count -eq 1 ]; then
-        estensioni=$(echo $w $estensioni)
+        estensioni=$(echo -e $w\n$estensioni)
+        let count=($count+1)%3
     else
-        let $count=($count+1)%3
+        let count=($count+1)%3
+    fi
 done
+estensioni=$(echo $estensioni | sort -u)
 
-for ext in "$estensioni"; do
+for ext in $estensioni; do
     fileExtCancellati=0
 
     count=0
-    for w in "$contenutoFile"; do
+    for w in $contenutoFile; do
         if [ $count -eq 0 ]; then
             nomeFileNoExt="$w"
         elif [ $count -eq 1 ]; then
