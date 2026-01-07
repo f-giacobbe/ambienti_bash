@@ -43,7 +43,7 @@ for w in $contFileInput; do
             let fileInalterati=$fileInalterati+1
 
         # Secondo caso: il file esiste ma con un'altra estensione -> lo copio in cartOutput cambiandogli estensione
-        elif [ -f "$cartella/$file.* ]; then
+        elif [ -f "$cartella/$file".* ]; then
             # Verifico prima se esiste già il file $nomeFile.$ext nella cartella di output
             if [ -f "$cartOutput/$file.$ext" ]; then
                 echo "Errore. File $cartOutput/$file.$ext già esistente"
